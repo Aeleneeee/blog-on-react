@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: unset;
+  border:none;
+  cursor: pointer;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+
+main {
+  padding:10px;
+  min-height: calc(100vh - 100px);
+}
+
+
+
+
+

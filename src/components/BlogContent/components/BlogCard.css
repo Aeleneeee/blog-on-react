@@ -1,0 +1,20 @@
+.like {
+    width:20px;
+}
+
+
+.post {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+     width:50%;
+     margin: 0 auto;
+}
+
+button {
+    background-color: transparent;
+}
+
+.delete__button {
+    font-size: 45px;
+}
