@@ -1,5 +1,5 @@
 
-  .showButton {
+  .myButton {
     text-align: center; 
     padding:4px 20px;
     font-size: 16px;
@@ -8,13 +8,22 @@
     border-radius: 9999px;
     cursor: pointer;
     transition-property: background-color, color;
-    transition-duration: 200ms;
+    transition-duration: 500ms;
     transition-timing-function: ease-out;
     
   }
   
+  .myButton:first-child {
+    margin-right: 5px;
+  }
   
-  .showButton:hover {
+  .myButton:hover {
     background-color: #651651;
   }
   
+  .buttons {
+    height:50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
