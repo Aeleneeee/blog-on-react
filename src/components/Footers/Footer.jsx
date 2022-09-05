@@ -4,5 +4,6 @@ export const Footer = ({ year }) => {
     <footer>
       <span>React blog - {year}</span>
     </footer>
+   
   );
 };

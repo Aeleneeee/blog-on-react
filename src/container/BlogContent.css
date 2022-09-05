@@ -1,3 +1,11 @@
+.circular {
+  width:40px;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  color:black;
+}
 
   .myButton {
     text-align: center; 
@@ -10,6 +18,7 @@
     transition-property: background-color, color;
     transition-duration: 500ms;
     transition-timing-function: ease-out;
+    
     
   }
   
@@ -26,4 +35,8 @@
     display:flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .loadingBAr {
+    text-align: center;
   }

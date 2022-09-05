@@ -11,10 +11,16 @@
      margin: 0 auto;
 }
 
+.buttons {
+    display:flex;
+    justify-content: baseline;
+}
+
 button {
     background-color: transparent;
 }
 
-.delete__button {
+.delete__button,
+.edit__post {
     font-size: 45px;
 }

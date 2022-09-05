@@ -1,0 +1,30 @@
+.authorizationForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.authorizationForm>* {
+    margin-bottom: 10px;
+}
+
+.loginInput,
+.passInput {
+    width:20%;
+   
+}
+
+.loginInput input,
+.passInput input {
+    border:none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.loginInput input:focus,
+.passInput input:focus {
+    border-bottom:1px solid #393939;
+    border-radius: 0;
+}

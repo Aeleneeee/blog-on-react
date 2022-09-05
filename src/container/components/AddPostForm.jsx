@@ -22,9 +22,9 @@ export class AddPostForm extends Component {
 
 
 
-  createNewPost = () => {
+  createNewPost = (e) => {
+    e.preventDefault()
     const post = {
-      id: this.props.blogArr.length +1,
       title: this.state.postTitle,
       description: this.state.postDescription,
       liked: false,
@@ -33,15 +33,28 @@ export class AddPostForm extends Component {
     this.props.newBlogPost(post)
     this.props.closeAddForm()
 
-  
   };
+
+  handleFormOnEnter = (e) => {
+    if (e.key === "Enter"){
+     this.createNewPost(e)
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("keyup", this.handleFormOnEnter);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keyup", this.handleFormOnEnter);
+  }
 
   render() {
     const closeAddForm = this.props.closeAddForm;
 
     return (
       <>
-        <form action="" className="addPostForm">
+        <form action="" className="addPostForm" onSubmit={this.createNewPost}>
           <div className="formHeader">
             <h3>Создание поста</h3>
             <button>
@@ -57,6 +70,7 @@ export class AddPostForm extends Component {
               placeholder="Название"
               value={this.state.postTitle}
               onChange={this.changeTitle}
+              required
             />
           </div>
           <div>
@@ -66,14 +80,14 @@ export class AddPostForm extends Component {
               placeholder="Описание поста"
               value={this.state.postDescription}
               onChange={this.changeDescription}
+              required
             />
           </div>
 
           <div>
             <button
               className="addPost"
-              type="button"
-              onClick={this.createNewPost}
+              type="submit"
             >
               Добавить новый пост
             </button>

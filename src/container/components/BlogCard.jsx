@@ -2,7 +2,9 @@ import React from 'react';
 import './BlogCard.css'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { EditPostForm } from './EditPostForm';
 
 export const BlogCard = (
   {
@@ -10,7 +12,10 @@ export const BlogCard = (
     description,
     liked,
     likePost,
-    deletePost
+    deletePost,
+    showEditForm,
+    closeEditForm,
+    handleSelectPost
   }
  
 ) => {
@@ -18,6 +23,10 @@ export const BlogCard = (
   const heartFill = liked? <FavoriteIcon style = {{fill: 'crimson' }}/> 
   :<FavoriteBorderIcon />
 
+  const editForm = () => {
+    handleSelectPost();
+    showEditForm()
+  }
 
   return (
     <div  className="post">
@@ -35,9 +44,16 @@ export const BlogCard = (
     </button>
     </div>
 
+    <div className='buttons'>
+    <button className='edit__post' onClick={editForm}>
+    <EditIcon/>
+    </button>
     <button className='delete__button' onClick={deletePost}>
         <DeleteForeverIcon/>
     </button>
+    </div>
+
+
 {/*       {liked} */}
     </div>
 )
