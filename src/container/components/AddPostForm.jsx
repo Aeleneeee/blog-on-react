@@ -1,60 +1,53 @@
 import "./AddPostForm.css";
 import ClearIcon from "@mui/icons-material/Clear";
-import { Component } from "react";
+import { useEffect, useState } from "react";
 
-export class AddPostForm extends Component {
-  state = {
-    postTitle: "",
-    postDescription: "",
+export const AddPostForm = (props) => {
+  
+  const [postTitle, setPostTitle] = useState ('')
+  const [postDescription, setPostDescription] = useState ('')
+
+  const changeTitle = (e) => {
+    setPostTitle(e.target.value)
   };
 
-  changeTitle = (e) => {
-    this.setState({
-      postTitle: e.target.value,
-    });
-  };
-
-  changeDescription = (e) => {
-    this.setState({
-      postDescription: e.target.value,
-    });
+  const changeDescription = (e) => {
+    setPostDescription(e.target.value)
   };
 
 
-
-  createNewPost = (e) => {
+  const createNewPost = (e) => {
     e.preventDefault()
     const post = {
-      title: this.state.postTitle,
-      description: this.state.postDescription,
+      title: postTitle,
+      description: postDescription,
       liked: false,
     };
     
-    this.props.newBlogPost(post)
-    this.props.closeAddForm()
+    props.newBlogPost(post)
+    props.closeAddForm()
 
   };
 
-  handleFormOnEnter = (e) => {
-    if (e.key === "Enter"){
-     this.createNewPost(e)
+
+  useEffect(() => {
+    const handleFormOnEnter = (e) => {
+      if (e.key === "Enter"){
+       createNewPost(e)
+      }
     }
-  }
+    window.addEventListener("keyup", handleFormOnEnter);
+    return() => window.removeEventListener("keyup", handleFormOnEnter);
+  //Если удалить ", [props]" то функция заработает, разберись солнышко ❤️
+  }, [props])
 
-  componentDidMount() {
-    window.addEventListener("keyup", this.handleFormOnEnter);
-  }
 
-  componentWillUnmount() {
-    window.removeEventListener("keyup", this.handleFormOnEnter);
-  }
 
-  render() {
-    const closeAddForm = this.props.closeAddForm;
+    const closeAddForm = props.closeAddForm;
 
     return (
       <>
-        <form action="" className="addPostForm" onSubmit={this.createNewPost}>
+        <form action="" className="addPostForm" onSubmit={createNewPost}>
           <div className="formHeader">
             <h3>Создание поста</h3>
             <button>
@@ -68,8 +61,8 @@ export class AddPostForm extends Component {
               className="formInput"
               name="postTitle"
               placeholder="Название"
-              value={this.state.postTitle}
-              onChange={this.changeTitle}
+              value={postTitle}
+              onChange={changeTitle}
               required
             />
           </div>
@@ -78,8 +71,8 @@ export class AddPostForm extends Component {
               name="postDescription"
               className="formInput"
               placeholder="Описание поста"
-              value={this.state.postDescription}
-              onChange={this.changeDescription}
+              value={postDescription}
+              onChange={changeDescription}
               required
             />
           </div>
@@ -97,4 +90,4 @@ export class AddPostForm extends Component {
       </>
     );
   }
-}
+

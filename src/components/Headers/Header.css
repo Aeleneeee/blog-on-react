@@ -21,6 +21,19 @@ header {
     color:#651651
   }
 
+  .userLog {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .userName {
+    font-size: 20px;
+  }
+
+  .LogoutIcon {
+    margin-right: 30px;
+  }
+
   .headerMenu {
     grid-column: 3/4;
   }

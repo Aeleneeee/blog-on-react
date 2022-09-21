@@ -1,62 +1,63 @@
 import "./EditPostform.css";
 import ClearIcon from "@mui/icons-material/Clear";
-import { Component } from "react";
+import { Component, useState, useEffect } from "react";
 
-export class EditPostForm extends Component {
-  state = {
-    postTitle: this.props.selectedPost.title,
-    postDescription: this.props.selectedPost.description,
-  };
+export const EditPostForm =(props) => {
 
-  updateEditPost = (e) => {
+
+  const [postTitle, setPostTitle] = useState(props.selectedPost.title)
+  const [postDescription, setPostDescription] = useState(props.selectedPost.description)
+
+ const updateEditPost = (e) => {
     e.preventDefault();
     const post = {
-      id: this.props.selectedPost.id,
-      title: this.state.postTitle,
-      description: this.state.postDescription,
+      id: props.selectedPost.id,
+      title: postTitle,
+      description: postDescription,
       
     };
 
-    this.props.editBlogPost(post);
-    this.props.closeEditForm();
+    props.editBlogPost(post);
+    props.closeEditForm();
   }
 
-  changeTitle = (e) => {
-    this.setState({
-      postTitle: e.target.value,
-    });
+  const changeTitle = (e) => {
+   setPostTitle(e.target.value)
   };
 
-  changeDescription = (e) => {
-    this.setState({
-      postDescription: e.target.value,
-   
-    });
+  const changeDescription = (e) => {
+  setPostDescription(e.target.value)
   };
 
-  handleForm = (e) => {
-    if (e.key === "Enter") {
-      this.updateEditPost(e);
-    }
-    if (e.key === "Escape") {
-      this.props.closeEditForm();
-    }
-  };
+  useEffect(() => {
+    const handleForm = (e) => {
+      if (e.key === "Enter") {
+        updateEditPost(e);
+      }
+      if (e.key === "Escape") {
+        props.closeEditForm();
+      }
+    };
+    window.addEventListener("keyup", handleForm);
 
-  componentDidMount() {
-    window.addEventListener("keyup", this.handleForm);
+    return() => window.removeEventListener("keyup", handleForm);
+  })
+
+  
+
+/*   const componentDidMount = () => {
+    window.addEventListener("keyup", handleForm);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("keyup", this.handleForm);
-  }
+  const componentWillUnmount = () => {
+    window.removeEventListener("keyup", handleForm);
+  } */
 
-  render() {
-    const closeEditForm = this.props.closeEditForm;
+    const closeEditForm = props.closeEditForm;
 
     return (
       <>
-        <form action="" className="editPostForm" onSubmit={this.updateEditPost}>
+        <form action="" className="editPostForm" onSubmit={updateEditPost}>
           <div className="formHeader">
             <h3>Редактирование поста</h3>
             <button>
@@ -70,8 +71,8 @@ export class EditPostForm extends Component {
               className="formInput"
               name="postTitle"
               placeholder="Название"
-              value={this.state.postTitle}
-              onChange={this.changeTitle}
+              value={postTitle}
+              onChange={changeTitle}
               required
             />
           </div>
@@ -80,8 +81,8 @@ export class EditPostForm extends Component {
               name="postDescription"
               className="formInput"
               placeholder="Описание поста"
-              value={this.state.postDescription}
-              onChange={this.changeDescription}
+              value={postDescription}
+              onChange={changeDescription}
               required
             />
           </div>
@@ -90,7 +91,7 @@ export class EditPostForm extends Component {
             <button
               className="editPost"
               type="submit"
-              onClick={this.updateEditPost}
+              onClick={updateEditPost}
             >
               Сохранить
             </button>
@@ -100,4 +101,4 @@ export class EditPostForm extends Component {
       </>
     );
   }
-}
+

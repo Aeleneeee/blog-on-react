@@ -1,10 +1,10 @@
 footer {
-    height:50px;
+   height:75px;
     background-color: #393939;
   
     display:flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
   }
   
   footer span {
@@ -13,4 +13,15 @@ footer {
     font-size: 18px;
     color:#fff;
   }
+
+footer nav{
+  width:100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.myContact{
+  font-size:30px;
+  color:#fff;
+}
   

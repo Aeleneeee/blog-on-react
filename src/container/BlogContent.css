@@ -1,42 +1,57 @@
 .circular {
-  width:40px;
-  position:fixed;
-  top:50%;
-  left:50%;
+  width: 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  color:black;
+  color: black;
 }
 
-  .myButton {
-    text-align: center; 
-    padding:4px 20px;
-    font-size: 16px;
-    background-color: #393939;
-    color:white;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition-property: background-color, color;
-    transition-duration: 500ms;
-    transition-timing-function: ease-out;
-    
-    
-  }
-  
-  .myButton:first-child {
-    margin-right: 5px;
-  }
-  
-  .myButton:hover {
-    background-color: #651651;
-  }
-  
-  .buttons {
-    height:50px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-  }
+.myButton {
+  text-align: center;
+  padding: 4px 20px;
+  font-size: 16px;
+  background-color: #393939;
+  color: white;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
 
-  .loadingBAr {
-    text-align: center;
-  }
+.myButton:first-child {
+  margin-right: 5px;
+}
+
+.myButton:hover {
+  background-color: #651651;
+}
+
+.buttons {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingBAr {
+  text-align: center;
+}
+
+.post {
+  max-width:300px;
+  box-shadow: 5px 5px 15px #393939;
+  padding: 10px;
+  
+
+}
+
+
+.posts {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+}
